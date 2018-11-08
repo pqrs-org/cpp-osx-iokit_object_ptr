@@ -1,7 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch.hpp>
 
-#include <pqrs/osx/ioobject_ptr.hpp>
+#include <pqrs/osx/iokit/ioobject_ptr.hpp>
 
 TEST_CASE("ioobject_ptr") {
   io_iterator_t it1;
