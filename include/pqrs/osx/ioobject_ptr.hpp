@@ -10,6 +10,7 @@
 
 namespace pqrs {
 namespace osx {
+namespace iokit {
 class ioobject_ptr final {
 public:
   ioobject_ptr(void) : ioobject_ptr(IO_OBJECT_NULL) {
@@ -74,5 +75,6 @@ public:
 private:
   io_object_t p_;
 };
+} // namespace iokit
 } // namespace osx
 } // namespace pqrs

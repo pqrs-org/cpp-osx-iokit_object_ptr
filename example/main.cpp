@@ -12,7 +12,7 @@ int main(void) {
     std::cout << IOObjectGetUserRetainCount(it) << std::endl; // CFGetRetainCount(*p) == 1
 
     {
-      pqrs::osx::ioobject_ptr p(it);
+      pqrs::osx::iokit::ioobject_ptr p(it);
       std::cout << IOObjectGetUserRetainCount(it) << std::endl; // CFGetRetainCount(*p) == 2
     }
 
