@@ -1,5 +1,5 @@
 #include <iostream>
-#include <pqrs/osx/iokit/ioobject_ptr.hpp>
+#include <pqrs/osx/iokit_object_ptr.hpp>
 
 int main(void) {
   {
@@ -12,7 +12,7 @@ int main(void) {
     std::cout << IOObjectGetUserRetainCount(it) << std::endl; // CFGetRetainCount(*p) == 1
 
     {
-      pqrs::osx::iokit::ioobject_ptr p(it);
+      pqrs::osx::iokit_object_ptr p(it);
       std::cout << IOObjectGetUserRetainCount(it) << std::endl; // CFGetRetainCount(*p) == 2
     }
 

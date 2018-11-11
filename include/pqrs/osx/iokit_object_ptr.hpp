@@ -1,6 +1,6 @@
 #pragma once
 
-// pqrs::ioobject_ptr v1.3.0
+// pqrs::osx::iokit_object_ptr v1.3.0
 
 // (C) Copyright Takayama Fumihiko 2018.
 // Distributed under the Boost Software License, Version 1.0.
@@ -10,23 +10,22 @@
 
 namespace pqrs {
 namespace osx {
-namespace iokit {
-class ioobject_ptr final {
+class iokit_object_ptr final {
 public:
-  ioobject_ptr(void) : ioobject_ptr(IO_OBJECT_NULL) {
+  iokit_object_ptr(void) : iokit_object_ptr(IO_OBJECT_NULL) {
   }
 
-  ioobject_ptr(io_object_t p) : p_(p) {
+  iokit_object_ptr(io_object_t p) : p_(p) {
     if (p_) {
       IOObjectRetain(p_);
     }
   }
 
-  ioobject_ptr(const ioobject_ptr& other) : p_(IO_OBJECT_NULL) {
+  iokit_object_ptr(const iokit_object_ptr& other) : p_(IO_OBJECT_NULL) {
     *this = other;
   }
 
-  ioobject_ptr& operator=(const ioobject_ptr& other) {
+  iokit_object_ptr& operator=(const iokit_object_ptr& other) {
     auto old = p_;
 
     p_ = other.p_;
@@ -41,7 +40,7 @@ public:
     return *this;
   }
 
-  ~ioobject_ptr(void) {
+  ~iokit_object_ptr(void) {
     reset();
   }
 
@@ -50,7 +49,7 @@ public:
   }
 
   io_object_t& get(void) {
-    return const_cast<io_object_t&>((static_cast<const ioobject_ptr&>(*this)).get());
+    return const_cast<io_object_t&>((static_cast<const iokit_object_ptr&>(*this)).get());
   }
 
   void reset(void) {
@@ -69,12 +68,11 @@ public:
   }
 
   io_object_t& operator*(void) {
-    return const_cast<io_object_t&>(*(static_cast<const ioobject_ptr&>(*this)));
+    return const_cast<io_object_t&>(*(static_cast<const iokit_object_ptr&>(*this)));
   }
 
 private:
   io_object_t p_;
 };
-} // namespace iokit
 } // namespace osx
 } // namespace pqrs
