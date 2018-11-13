@@ -7,14 +7,15 @@ A smart pointer of `io_object_t`.
 
 ## Install
 
+### Using package manager
+
+You can install `include/pqrs` by using [cget](https://github.com/pfultz2/cget).
+
+```shell
+cget install pqrs-org/cpp-cget-recipes
+cget install pqrs-org/cpp-osx-iokit_object_ptr
+```
+
 ### Manual install
 
 Copy `include/pqrs` directory into your include directory.
-
-### Using package manager
-
-You can also install `include/pqrs` by using [cget](https://github.com/pfultz2/cget).
-
-```shell
-cget install pqrs-org/cpp-osx-iokit_object_ptr@v2.1.0 --cmake header
-```
