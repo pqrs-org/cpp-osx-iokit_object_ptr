@@ -64,14 +64,6 @@ TEST_CASE("iokit_object_ptr") {
     pqrs::osx::iokit_object_ptr ptr1(it1);
     REQUIRE(IOObjectGetUserRetainCount(it1) == 2);
 
-    ptr1 = ptr1;
-    REQUIRE(IOObjectGetUserRetainCount(it1) == 2);
-  }
-
-  {
-    pqrs::osx::iokit_object_ptr ptr1(it1);
-    REQUIRE(IOObjectGetUserRetainCount(it1) == 2);
-
     pqrs::osx::iokit_object_ptr ptr1_1(ptr1);
     REQUIRE(IOObjectGetUserRetainCount(it1) == 3);
 
