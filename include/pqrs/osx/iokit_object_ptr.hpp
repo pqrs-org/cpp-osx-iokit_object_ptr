@@ -64,11 +64,11 @@ public:
   }
 
   const io_object_t& operator*(void)const {
-    return p_;
+    return get();
   }
 
   io_object_t& operator*(void) {
-    return const_cast<io_object_t&>(*(static_cast<const iokit_object_ptr&>(*this)));
+    return get();
   }
 
 private:
