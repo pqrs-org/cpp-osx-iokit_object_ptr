@@ -74,3 +74,27 @@ TEST_CASE("iokit_object_ptr") {
     REQUIRE(IOObjectGetUserRetainCount(it1) == 1);
   }
 }
+
+TEST_CASE("iokit_object_ptr::conforms_to, class_name") {
+  {
+    pqrs::osx::iokit_object_ptr ptr;
+    REQUIRE(ptr.conforms_to("IOUserIterator") == false);
+    REQUIRE(ptr.class_name() == std::nullopt);
+  }
+
+  {
+    io_iterator_t it;
+    IORegistryCreateIterator(kIOMasterPortDefault,
+                             kIOServicePlane,
+                             0,
+                             &it);
+    pqrs::osx::iokit_object_ptr ptr(it);
+    REQUIRE(ptr.conforms_to("IOUserIterator") == true);
+    REQUIRE(ptr.conforms_to("IORegistryEntry") == false);
+    REQUIRE(ptr.class_name() == "IOUserIterator");
+
+    ptr.reset();
+    REQUIRE(ptr.conforms_to("IOUserIterator") == false);
+    REQUIRE(ptr.class_name() == std::nullopt);
+  }
+}

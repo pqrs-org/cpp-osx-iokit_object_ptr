@@ -5,6 +5,12 @@
 
 A smart pointer of `io_object_t`.
 
+## Requirements
+
+cpp-osx-iokit_object_ptr depends the following classes.
+
+- [pqrs::osx::iokit_return](https://github.com/pqrs-org/cpp-osx-iokit_return)
+
 ## Install
 
 ### Using package manager
