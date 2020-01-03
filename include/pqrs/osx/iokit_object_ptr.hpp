@@ -22,13 +22,13 @@ public:
   iokit_object_ptr(void) : iokit_object_ptr(IO_OBJECT_NULL) {
   }
 
-  iokit_object_ptr(io_object_t p) : p_(p) {
+  explicit iokit_object_ptr(io_object_t p) : p_(p) {
     if (p_) {
       IOObjectRetain(p_);
     }
   }
 
-  iokit_object_ptr(const iokit_object_ptr& other) : p_(IO_OBJECT_NULL) {
+  explicit iokit_object_ptr(const iokit_object_ptr& other) : p_(IO_OBJECT_NULL) {
     *this = other;
   }
 

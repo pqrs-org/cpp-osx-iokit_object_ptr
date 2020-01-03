@@ -37,7 +37,7 @@ TEST_CASE("iokit_object_ptr") {
     pqrs::osx::iokit_object_ptr ptr1(it1);
     REQUIRE(IOObjectGetUserRetainCount(it1) == 2);
 
-    ptr1 = IO_OBJECT_NULL;
+    ptr1 = pqrs::osx::iokit_object_ptr();
     REQUIRE(IOObjectGetUserRetainCount(it1) == 1);
   }
 
@@ -51,11 +51,11 @@ TEST_CASE("iokit_object_ptr") {
     REQUIRE(IOObjectGetUserRetainCount(it1) == 1);
     REQUIRE(IOObjectGetUserRetainCount(it2) == 3);
 
-    ptr1 = IO_OBJECT_NULL;
+    ptr1 = pqrs::osx::iokit_object_ptr();
     REQUIRE(IOObjectGetUserRetainCount(it1) == 1);
     REQUIRE(IOObjectGetUserRetainCount(it2) == 2);
 
-    ptr2 = IO_OBJECT_NULL;
+    ptr2 = pqrs::osx::iokit_object_ptr();
     REQUIRE(IOObjectGetUserRetainCount(it1) == 1);
     REQUIRE(IOObjectGetUserRetainCount(it2) == 1);
   }
@@ -67,10 +67,10 @@ TEST_CASE("iokit_object_ptr") {
     pqrs::osx::iokit_object_ptr ptr1_1(ptr1);
     REQUIRE(IOObjectGetUserRetainCount(it1) == 3);
 
-    ptr1 = IO_OBJECT_NULL;
+    ptr1 = pqrs::osx::iokit_object_ptr();
     REQUIRE(IOObjectGetUserRetainCount(it1) == 2);
 
-    ptr1_1 = IO_OBJECT_NULL;
+    ptr1_1 = pqrs::osx::iokit_object_ptr();
     REQUIRE(IOObjectGetUserRetainCount(it1) == 1);
   }
 }
