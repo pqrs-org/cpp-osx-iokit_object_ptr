@@ -8,7 +8,7 @@
 
 #include <IOKit/IOKitLib.h>
 #include <optional>
-#include <pqrs/osx/iokit_return.hpp>
+#include <pqrs/osx/kern_return.hpp>
 #include <string>
 
 namespace pqrs {
@@ -101,7 +101,7 @@ public:
   std::optional<std::string> class_name(void) const {
     if (p_) {
       io_name_t name;
-      iokit_return r = IOObjectGetClass(p_, name);
+      kern_return r = IOObjectGetClass(p_, name);
       if (r) {
         return name;
       }

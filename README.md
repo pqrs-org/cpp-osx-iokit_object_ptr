@@ -9,7 +9,7 @@ A smart pointer of `io_object_t`.
 
 cpp-osx-iokit_object_ptr depends the following classes.
 
-- [pqrs::osx::iokit_return](https://github.com/pqrs-org/cpp-osx-iokit_return)
+- [pqrs::osx::kern_return](https://github.com/pqrs-org/cpp-osx-kern_return)
 
 ## Install
 
