@@ -98,3 +98,14 @@ TEST_CASE("iokit_object_ptr::conforms_to, class_name") {
     REQUIRE(ptr.class_name() == std::nullopt);
   }
 }
+
+namespace {
+pqrs::osx::iokit_object_ptr copy_constructor_test(void) {
+  pqrs::osx::iokit_object_ptr result;
+  return result;
+}
+} // namespace
+
+TEST_CASE("iokit_object_ptr::copy_constructor_test") {
+  copy_constructor_test();
+}

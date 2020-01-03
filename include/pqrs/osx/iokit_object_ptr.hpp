@@ -28,7 +28,7 @@ public:
     }
   }
 
-  explicit iokit_object_ptr(const iokit_object_ptr& other) : p_(IO_OBJECT_NULL) {
+  iokit_object_ptr(const iokit_object_ptr& other) : p_(IO_OBJECT_NULL) {
     *this = other;
   }
 
