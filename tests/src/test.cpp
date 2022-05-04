@@ -6,11 +6,11 @@
 TEST_CASE("iokit_object_ptr") {
   io_iterator_t it1;
   io_iterator_t it2;
-  IORegistryCreateIterator(kIOMasterPortDefault,
+  IORegistryCreateIterator(kIOMainPortDefault,
                            kIOServicePlane,
                            0,
                            &it1);
-  IORegistryCreateIterator(kIOMasterPortDefault,
+  IORegistryCreateIterator(kIOMainPortDefault,
                            kIOServicePlane,
                            0,
                            &it2);
@@ -84,7 +84,7 @@ TEST_CASE("iokit_object_ptr::conforms_to, class_name") {
 
   {
     io_iterator_t it;
-    IORegistryCreateIterator(kIOMasterPortDefault,
+    IORegistryCreateIterator(kIOMainPortDefault,
                              kIOServicePlane,
                              0,
                              &it);

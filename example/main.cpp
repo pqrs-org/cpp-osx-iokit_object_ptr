@@ -4,7 +4,7 @@
 int main(void) {
   {
     io_iterator_t it;
-    IORegistryCreateIterator(kIOMasterPortDefault,
+    IORegistryCreateIterator(kIOMainPortDefault,
                              kIOServicePlane,
                              0,
                              &it);
