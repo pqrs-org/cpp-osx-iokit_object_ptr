@@ -2,15 +2,16 @@
 #include <catch2/catch.hpp>
 
 #include <pqrs/osx/iokit_object_ptr.hpp>
+#include <pqrs/osx/iokit_types.hpp>
 
 TEST_CASE("iokit_object_ptr") {
   io_iterator_t it1;
   io_iterator_t it2;
-  IORegistryCreateIterator(kIOMainPortDefault,
+  IORegistryCreateIterator(type_safe::get(pqrs::osx::iokit_mach_port::null),
                            kIOServicePlane,
                            0,
                            &it1);
-  IORegistryCreateIterator(kIOMainPortDefault,
+  IORegistryCreateIterator(type_safe::get(pqrs::osx::iokit_mach_port::null),
                            kIOServicePlane,
                            0,
                            &it2);
@@ -84,7 +85,7 @@ TEST_CASE("iokit_object_ptr::conforms_to, class_name") {
 
   {
     io_iterator_t it;
-    IORegistryCreateIterator(kIOMainPortDefault,
+    IORegistryCreateIterator(type_safe::get(pqrs::osx::iokit_mach_port::null),
                              kIOServicePlane,
                              0,
                              &it);
