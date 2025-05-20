@@ -1,3 +1,0 @@
-boost-ext/ut
-pqrs-org/cpp-osx-iokit_types
-pqrs-org/cpp-osx-kern_return
