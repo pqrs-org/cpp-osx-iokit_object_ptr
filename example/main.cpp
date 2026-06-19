@@ -2,7 +2,7 @@
 #include <pqrs/osx/iokit_object_ptr.hpp>
 #include <pqrs/osx/iokit_types.hpp>
 
-int main(void) {
+int main() {
   {
     io_iterator_t it;
     IORegistryCreateIterator(type_safe::get(pqrs::osx::iokit_mach_port::null),
