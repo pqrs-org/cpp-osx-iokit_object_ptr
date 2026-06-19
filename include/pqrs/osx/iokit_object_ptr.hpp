@@ -138,6 +138,19 @@ public:
   }
 
 private:
+  struct adopt_tag final {
+  };
+
+  explicit iokit_object_ptr(io_object_t p, adopt_tag) noexcept
+      : p_(p) {
+  }
+
+  friend iokit_object_ptr adopt_iokit_object_ptr(io_object_t p) noexcept;
+
   io_object_t p_{IO_OBJECT_NULL};
 };
+
+[[nodiscard]] inline iokit_object_ptr adopt_iokit_object_ptr(io_object_t p) noexcept {
+  return iokit_object_ptr(p, iokit_object_ptr::adopt_tag{});
+}
 } // namespace pqrs::osx

@@ -111,6 +111,27 @@ int main() {
     IOObjectRelease(it2);
   };
 
+  "adopt_iokit_object_ptr"_test = [] {
+    io_iterator_t it = IO_OBJECT_NULL;
+    expect(fatal(IORegistryCreateIterator(type_safe::get(pqrs::osx::iokit_mach_port::null),
+                                          kIOServicePlane,
+                                          0,
+                                          &it) == KERN_SUCCESS));
+
+    {
+      auto ptr = pqrs::osx::adopt_iokit_object_ptr(it);
+      expect(IOObjectGetUserRetainCount(it) == 1);
+      expect(ptr == true);
+
+      {
+        pqrs::osx::iokit_object_ptr copied(ptr);
+        expect(IOObjectGetUserRetainCount(it) == 2);
+      }
+
+      expect(IOObjectGetUserRetainCount(it) == 1);
+    }
+  };
+
   "iokit_object_ptr::conforms_to, class_name"_test = [] {
     {
       pqrs::osx::iokit_object_ptr ptr;
